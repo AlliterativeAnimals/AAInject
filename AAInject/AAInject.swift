@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AAInjector {
+public class AAInjector {
     typealias FactoryFunction = (AAInjector) throws -> Any
     private var knownFactories: [ String : FactoryFunction ] = [:]
     private var cachedServices: [ String : Any ] = [:]
@@ -62,7 +62,7 @@ class AAInjector {
     }
 }
 
-enum AAInjectorError: Error {
+public enum AAInjectorError: Error {
     case ServiceNotRegistered(serviceKey: String)
     case PropertyNotRegistered(propertyKey: String)
     case PropertyTypeMismatch(propertyKey: String, expectedType: String, actualType: String)
