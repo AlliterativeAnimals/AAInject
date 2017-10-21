@@ -20,7 +20,7 @@ public class AAInjector {
         return "\(serviceType)"
     }
     
-    public func register<Service>(_ serviceType: Service.Type, factory: @escaping (AAInjector) throws -> Service) {
+    public func registerService<Service>(_ serviceType: Service.Type, factory: @escaping (AAInjector) throws -> Service) {
         self.knownFactories.updateValue(factory, forKey: self.typeToString(serviceType))
     }
     

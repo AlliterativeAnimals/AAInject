@@ -37,7 +37,7 @@ class AAInjectTests: XCTestCase {
         
         self.injector.registerProperty("name", value: name)
         
-        self.injector.register(ExampleClass.self) { (injector) throws -> ExampleClass in
+        self.injector.registerService(ExampleClass.self) { (injector) throws -> ExampleClass in
             return ExampleClass(name: try injector.injectProperty("name"))
         }
         
@@ -47,7 +47,7 @@ class AAInjectTests: XCTestCase {
     func testSharesInstances() {
         self.injector.registerProperty("name", value: "John Smith")
         
-        self.injector.register(ExampleClass.self) { (injector) throws -> ExampleClass in
+        self.injector.registerService(ExampleClass.self) { (injector) throws -> ExampleClass in
             return ExampleClass(name: try injector.injectProperty("name"))
         }
         
@@ -59,11 +59,11 @@ class AAInjectTests: XCTestCase {
         
         self.injector.registerProperty("name", value: name)
         
-        self.injector.register(ExampleClass.self) { (injector) throws -> ExampleClass in
+        self.injector.registerService(ExampleClass.self) { (injector) throws -> ExampleClass in
             return ExampleClass(name: try injector.injectProperty("name"))
         }
         
-        self.injector.register(ExampleWrapperClass.self) { (injector) -> ExampleWrapperClass in
+        self.injector.registerService(ExampleWrapperClass.self) { (injector) -> ExampleWrapperClass in
             return ExampleWrapperClass(contents: try injector.injectService(ExampleClass.self))
         }
         
