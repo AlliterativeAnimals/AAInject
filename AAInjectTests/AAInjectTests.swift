@@ -27,47 +27,47 @@ class AAInjectTests: XCTestCase {
     func testSimpleProperties() {
         let key = "testProperty"
         let value = "hello world"
-        self.injector.setProperty(key, value: value)
+        self.injector.registerProperty(key, value: value)
         
-        XCTAssertEqual(try self.injector.getProperty(key), value, "Should return the property when available")
+        XCTAssertEqual(try self.injector.injectProperty(key), value, "Should return the property when available")
     }
     
     func testInjectProperty() {
         let name = "John Smith"
         
-        self.injector.setProperty("name", value: name)
+        self.injector.registerProperty("name", value: name)
         
         self.injector.register(ExampleClass.self) { (injector) throws -> ExampleClass in
-            return ExampleClass(name: try injector.getProperty("name"))
+            return ExampleClass(name: try injector.injectProperty("name"))
         }
         
-        XCTAssertEqual(try self.injector.inject(ExampleClass.self).name, name, "Expect injected property to match")
+        XCTAssertEqual(try self.injector.injectService(ExampleClass.self).name, name, "Expect injected property to match")
     }
     
     func testSharesInstances() {
-        self.injector.setProperty("name", value: "John Smith")
+        self.injector.registerProperty("name", value: "John Smith")
         
         self.injector.register(ExampleClass.self) { (injector) throws -> ExampleClass in
-            return ExampleClass(name: try injector.getProperty("name"))
+            return ExampleClass(name: try injector.injectProperty("name"))
         }
         
-        XCTAssert(try self.injector.inject(ExampleClass.self) === self.injector.inject(ExampleClass.self), "Expect injected services to be reused")
+        XCTAssert(try self.injector.injectService(ExampleClass.self) === self.injector.injectService(ExampleClass.self), "Expect injected services to be reused")
     }
     
     func testDeepInjection() {
         let name = "John Smith"
         
-        self.injector.setProperty("name", value: name)
+        self.injector.registerProperty("name", value: name)
         
         self.injector.register(ExampleClass.self) { (injector) throws -> ExampleClass in
-            return ExampleClass(name: try injector.getProperty("name"))
+            return ExampleClass(name: try injector.injectProperty("name"))
         }
         
         self.injector.register(ExampleWrapperClass.self) { (injector) -> ExampleWrapperClass in
-            return ExampleWrapperClass.init(contents: try injector.inject(ExampleClass.self))
+            return ExampleWrapperClass(contents: try injector.injectService(ExampleClass.self))
         }
         
-        XCTAssertEqual(try self.injector.inject(ExampleWrapperClass.self).contents.name, name, "Expect deep-injected property to match")
+        XCTAssertEqual(try self.injector.injectService(ExampleWrapperClass.self).contents.name, name, "Expect deep-injected property to match")
     }
 }
 

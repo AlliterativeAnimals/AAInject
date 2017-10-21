@@ -14,13 +14,17 @@ public class AAInjector {
     private var cachedServices: [ String : Any ] = [:]
     private var knownProperties: [ String : Any ] = [:]
     
-    init() {}
+    public init() {}
     
     private func typeToString<Service>(_ serviceType: Service.Type) -> String {
         return "\(serviceType)"
     }
     
-    func inject<Service: AnyObject>(_ serviceType: Service.Type) throws -> Service {
+    public func register<Service>(_ serviceType: Service.Type, factory: @escaping (AAInjector) throws -> Service) {
+        self.knownFactories.updateValue(factory, forKey: self.typeToString(serviceType))
+    }
+    
+    public func injectService<Service: AnyObject>(_ serviceType: Service.Type) throws -> Service {
         let serviceKey = self.typeToString(serviceType)
         
         guard !(self.cachedServices[serviceKey] is Service) else {
@@ -37,11 +41,11 @@ public class AAInjector {
         return result
     }
     
-    func setProperty(_ key: String, value: Any) -> Void {
+    public func registerProperty(_ key: String, value: Any) -> Void {
         self.knownProperties.updateValue(value, forKey: key)
     }
     
-    func getProperty<T>(_ key: String) throws -> T {
+    public func injectProperty<T>(_ key: String) throws -> T {
         guard let rawProperty = self.knownProperties[key] else {
             throw AAInjectorError.PropertyNotRegistered(propertyKey: key)
         }
@@ -55,10 +59,6 @@ public class AAInjector {
         }
         
         return property
-    }
-    
-    func register<Service>(_ serviceType: Service.Type, factory: @escaping (AAInjector) throws -> Service) {
-        self.knownFactories.updateValue(factory, forKey: self.typeToString(serviceType))
     }
 }
 
