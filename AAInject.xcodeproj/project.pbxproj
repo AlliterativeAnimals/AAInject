@@ -9,13 +9,28 @@
 /* Begin PBXBuildFile section */
 		CFBE254E1F9BEC2C00CEE820 /* AAInject.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBE254C1F9BEC2C00CEE820 /* AAInject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFBE25551F9BEC5600CEE820 /* AAInject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE25541F9BEC5600CEE820 /* AAInject.swift */; };
+		CFBE255D1F9BF75600CEE820 /* AAInjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE255C1F9BF75600CEE820 /* AAInjectTests.swift */; };
+		CFBE255F1F9BF75600CEE820 /* AAInject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBE25491F9BEC2C00CEE820 /* AAInject.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CFBE25601F9BF75600CEE820 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFBE25401F9BEC2C00CEE820 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFBE25481F9BEC2C00CEE820;
+			remoteInfo = AAInject;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CFBE25491F9BEC2C00CEE820 /* AAInject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AAInject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBE254C1F9BEC2C00CEE820 /* AAInject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAInject.h; sourceTree = "<group>"; };
 		CFBE254D1F9BEC2C00CEE820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFBE25541F9BEC5600CEE820 /* AAInject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAInject.swift; sourceTree = "<group>"; };
+		CFBE255A1F9BF75600CEE820 /* AAInjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AAInjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFBE255C1F9BF75600CEE820 /* AAInjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAInjectTests.swift; sourceTree = "<group>"; };
+		CFBE255E1F9BF75600CEE820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +41,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CFBE25571F9BF75600CEE820 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFBE255F1F9BF75600CEE820 /* AAInject.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				CFBE254B1F9BEC2C00CEE820 /* AAInject */,
+				CFBE255B1F9BF75600CEE820 /* AAInjectTests */,
 				CFBE254A1F9BEC2C00CEE820 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				CFBE25491F9BEC2C00CEE820 /* AAInject.framework */,
+				CFBE255A1F9BF75600CEE820 /* AAInjectTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -53,6 +78,15 @@
 				CFBE25541F9BEC5600CEE820 /* AAInject.swift */,
 			);
 			path = AAInject;
+			sourceTree = "<group>";
+		};
+		CFBE255B1F9BF75600CEE820 /* AAInjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				CFBE255C1F9BF75600CEE820 /* AAInjectTests.swift */,
+				CFBE255E1F9BF75600CEE820 /* Info.plist */,
+			);
+			path = AAInjectTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,18 +121,41 @@
 			productReference = CFBE25491F9BEC2C00CEE820 /* AAInject.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		CFBE25591F9BF75600CEE820 /* AAInjectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFBE25621F9BF75600CEE820 /* Build configuration list for PBXNativeTarget "AAInjectTests" */;
+			buildPhases = (
+				CFBE25561F9BF75600CEE820 /* Sources */,
+				CFBE25571F9BF75600CEE820 /* Frameworks */,
+				CFBE25581F9BF75600CEE820 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFBE25611F9BF75600CEE820 /* PBXTargetDependency */,
+			);
+			name = AAInjectTests;
+			productName = AAInjectTests;
+			productReference = CFBE255A1F9BF75600CEE820 /* AAInjectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		CFBE25401F9BEC2C00CEE820 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Alliterative Animals";
 				TargetAttributes = {
 					CFBE25481F9BEC2C00CEE820 = {
 						CreatedOnToolsVersion = 9.1;
 						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+					};
+					CFBE25591F9BF75600CEE820 = {
+						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -116,12 +173,20 @@
 			projectRoot = "";
 			targets = (
 				CFBE25481F9BEC2C00CEE820 /* AAInject */,
+				CFBE25591F9BF75600CEE820 /* AAInjectTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CFBE25471F9BEC2C00CEE820 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFBE25581F9BF75600CEE820 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -139,7 +204,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CFBE25561F9BF75600CEE820 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFBE255D1F9BF75600CEE820 /* AAInjectTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CFBE25611F9BF75600CEE820 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFBE25481F9BEC2C00CEE820 /* AAInject */;
+			targetProxy = CFBE25601F9BF75600CEE820 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CFBE254F1F9BEC2C00CEE820 /* Debug */ = {
@@ -300,6 +381,34 @@
 			};
 			name = Release;
 		};
+		CFBE25631F9BF75600CEE820 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RLLXP336FH;
+				INFOPLIST_FILE = AAInjectTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.reactiveraven.AAInjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CFBE25641F9BF75600CEE820 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RLLXP336FH;
+				INFOPLIST_FILE = AAInjectTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.reactiveraven.AAInjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -317,6 +426,15 @@
 			buildConfigurations = (
 				CFBE25521F9BEC2C00CEE820 /* Debug */,
 				CFBE25531F9BEC2C00CEE820 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFBE25621F9BF75600CEE820 /* Build configuration list for PBXNativeTarget "AAInjectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFBE25631F9BF75600CEE820 /* Debug */,
+				CFBE25641F9BF75600CEE820 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
