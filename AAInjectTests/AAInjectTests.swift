@@ -69,9 +69,25 @@ class AAInjectTests: XCTestCase {
         
         XCTAssertEqual(try self.injector.injectService(ExampleWrapperClass.self).contents.name, name, "Expect deep-injected property to match")
     }
+    
+    func testProtocolInjection() {
+        let name = "John Smith"
+        
+        self.injector.registerProperty("name", value: name)
+        
+        self.injector.registerService(ExampleClassProtocol.self) { (injector) throws -> ExampleClass in
+            return ExampleClass(name: try injector.injectProperty("name"))
+        }
+        
+        XCTAssertEqual(try self.injector.injectService(ExampleClassProtocol.self).name, name, "Expect injected services to be instantiable from protocols")
+    }
 }
 
-class ExampleClass {
+protocol ExampleClassProtocol: class {
+    var name: String { get }
+}
+
+class ExampleClass: ExampleClassProtocol {
     let name: String
     
     init(name: String) {

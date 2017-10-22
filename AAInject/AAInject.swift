@@ -24,7 +24,7 @@ public class AAInjector {
         self.knownFactories.updateValue(factory, forKey: self.typeToString(serviceType))
     }
     
-    public func injectService<Service: AnyObject>(_ serviceType: Service.Type) throws -> Service {
+    public func injectService<Service>(_ serviceType: Service.Type) throws -> Service {
         let serviceKey = self.typeToString(serviceType)
         
         guard !(self.cachedServices[serviceKey] is Service) else {
